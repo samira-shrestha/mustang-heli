@@ -15,6 +15,7 @@
     --font-weight-medium: 500;
     --font-weight-bold: 700;
     --radius-xl: 0.75rem;
+    --ease-out: cubic-bezier(0, 0, 0.2, 1);
     --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -175,17 +176,11 @@
   .absolute {
     position: absolute;
   }
-  .fixed {
-    position: fixed;
-  }
   .relative {
     position: relative;
   }
-  .top-1 {
-    top: calc(var(--spacing) * 1);
-  }
-  .top-1\/2 {
-    top: calc(1/2 * 100%);
+  .top-0 {
+    top: calc(var(--spacing) * 0);
   }
   .top-\[-40\%\] {
     top: -40%;
@@ -193,23 +188,17 @@
   .top-\[50\%\] {
     top: 50%;
   }
-  .right-4 {
-    right: calc(var(--spacing) * 4);
+  .left-0 {
+    left: calc(var(--spacing) * 0);
   }
   .left-1 {
     left: calc(var(--spacing) * 1);
   }
-  .left-\[1\%\] {
-    left: 1%;
+  .left-1\/2 {
+    left: calc(1/2 * 100%);
   }
   .left-\[5\%\] {
     left: 5%;
-  }
-  .left-\[20\%\] {
-    left: 20%;
-  }
-  .left-\[30\%\] {
-    left: 30%;
   }
   .z-10 {
     z-index: 10;
@@ -232,9 +221,6 @@
   .mt-\[60px\] {
     margin-top: 60px;
   }
-  .mb-2 {
-    margin-bottom: calc(var(--spacing) * 2);
-  }
   .mb-12 {
     margin-bottom: calc(var(--spacing) * 12);
   }
@@ -250,8 +236,14 @@
   .table {
     display: table;
   }
-  .h-5 {
-    height: calc(var(--spacing) * 5);
+  .h-\[250px\] {
+    height: 250px;
+  }
+  .h-\[300px\] {
+    height: 300px;
+  }
+  .h-\[400px\] {
+    height: 400px;
   }
   .h-\[440px\] {
     height: 440px;
@@ -262,17 +254,14 @@
   .h-full {
     height: 100%;
   }
-  .h-screen {
-    height: 100vh;
-  }
-  .w-5 {
-    width: calc(var(--spacing) * 5);
-  }
   .w-\[60\%\] {
     width: 60%;
   }
   .w-\[70\%\] {
     width: 70%;
+  }
+  .w-\[670px\] {
+    width: 670px;
   }
   .w-full {
     width: 100%;
@@ -283,15 +272,30 @@
   .max-w-\[433px\] {
     max-width: 433px;
   }
+  .max-w-\[470px\] {
+    max-width: 470px;
+  }
+  .max-w-\[500px\] {
+    max-width: 500px;
+  }
+  .max-w-\[550px\] {
+    max-width: 550px;
+  }
+  .max-w-\[600px\] {
+    max-width: 600px;
+  }
+  .max-w-\[670px\] {
+    max-width: 670px;
+  }
   .border-collapse {
     border-collapse: collapse;
   }
-  .-translate-y-1 {
-    --tw-translate-y: calc(var(--spacing) * -1);
+  .-translate-x-1 {
+    --tw-translate-x: calc(var(--spacing) * -1);
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
-  .-translate-y-1\/2 {
-    --tw-translate-y: calc(calc(1/2 * 100%) * -1);
+  .-translate-x-1\/2 {
+    --tw-translate-x: calc(calc(1/2 * 100%) * -1);
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
   .rotate-180 {
@@ -355,10 +359,6 @@
   .font-subrayada {
     font-family: var(--font-subrayada);
   }
-  .text-sm {
-    font-size: var(--text-sm);
-    line-height: var(--tw-leading, var(--text-sm--line-height));
-  }
   .text-\[14px\] {
     font-size: 14px;
   }
@@ -382,10 +382,6 @@
   .font-normal {
     --tw-font-weight: var(--font-weight-normal);
     font-weight: var(--font-weight-normal);
-  }
-  .tracking-\[0\.3em\] {
-    --tw-tracking: 0.3em;
-    letter-spacing: 0.3em;
   }
   .text-\[\#FE7510\] {
     color: #FE7510;
@@ -415,6 +411,10 @@
   .ease-in-out {
     --tw-ease: var(--ease-in-out);
     transition-timing-function: var(--ease-in-out);
+  }
+  .ease-out {
+    --tw-ease: var(--ease-out);
+    transition-timing-function: var(--ease-out);
   }
   .\[writing-mode\:vertical-rl\] {
     writing-mode: vertical-rl;
@@ -504,6 +504,16 @@
       margin-bottom: 200px;
     }
   }
+  .lg\:h-\[300px\] {
+    @media (width >= 64rem) {
+      height: 300px;
+    }
+  }
+  .lg\:max-w-\[550px\] {
+    @media (width >= 64rem) {
+      max-width: 550px;
+    }
+  }
   .lg\:text-\[18px\] {
     @media (width >= 64rem) {
       font-size: 18px;
@@ -575,10 +585,6 @@
   syntax: "*";
   inherits: false;
 }
-@property --tw-tracking {
-  syntax: "*";
-  inherits: false;
-}
 @property --tw-outline-style {
   syntax: "*";
   inherits: false;
@@ -620,7 +626,6 @@
       --tw-skew-y: initial;
       --tw-border-style: solid;
       --tw-font-weight: initial;
-      --tw-tracking: initial;
       --tw-outline-style: solid;
       --tw-duration: initial;
       --tw-ease: initial;
